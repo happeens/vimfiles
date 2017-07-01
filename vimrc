@@ -19,6 +19,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'Raimondi/delimitMate'
 Plugin 'junegunn/goyo.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'Shougo/neocomplete.vim'
 
 Plugin 'tpope/vim-fugitive'
 
@@ -109,15 +110,6 @@ set showcmd
 " Start scrolling five lines before the horizontal window border
 set scrolloff=3
 
-" Command to strip trailing whitespaces (:Sws)
-function! StripWhitespace()
-    let save_cursor=getpos('.')
-    let old_query=getreg('/')
-    :%s/\s\+$//e
-    call setpos('-',save_cursor)
-    call setreg('/',old_query)
-endfunction
-
 " Map NERDTree to ctrl-n
 map <C-n> :NERDTreeToggle<CR>
 
@@ -146,20 +138,28 @@ set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 " copy last yanked to system clipboard
 map <F3> :call system('xclip -sel clipboard -f', @0)<CR>
 
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<tab>', '<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<s-tab>', '<C-p>', '<Up>']
-
-" better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = '<c-j>'
-let g:UltiSnipsJumpForwardTrigger = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-let g:UltiSnipsSnippetsDirectories = ['UltiSnips', 'plugins/vim-snippets/UltiSnips']
-let g:UltiSnipsEditSplit = 'vertical'
-let g:UltiSnipsUsePythonVersion = 2
-
-" Disable ycm preview
+" Disable preview
 set completeopt-=preview
 
 " emmet config
 let g:user_emmet_leader_key='<C-l>'
+
+" neocomplete config
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#auto_completion_start_length = 3
+let g:neocomplete#sources#buffer#cache_limit_size = 50000
+let g:neocomplete#data_directory = $HOME.'/vimfiles/cache/nc'
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+
+" neocomplete mappings
+inoremap <expr><C-k> neocomplete#undo_completion()
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : : "\<TAB>"
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
