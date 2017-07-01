@@ -31,6 +31,7 @@ Plugin 'mattn/emmet-vim'
 " javascript
 Plugin 'pangloss/vim-javascript'
 Plugin 'jelera/vim-javascript-syntax'
+Plugin 'ternjs/tern_for_vim'
 
 " vuejs
 Plugin 'posva/vim-vue'

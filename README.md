@@ -12,8 +12,5 @@ ln -s ~/vimfiles/vimrc ~/.vimrc
 ```
 
 Now run vim and do :PluginInstall to have Vundle fetch all plugins.
-Then compile YCM:
+Then, run `npm i` in the tern directory.
 
-```
-python3 ~/vimfiles/bundle/YouCompleteMe/install.py
-```
