@@ -21,15 +21,19 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'junegunn/goyo.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 
-" Snippets
-Bundle 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
+Plugin 'tpope/vim-fugitive'
 
 " Language specific plugins
+
+" HTML/CSS
+Plugin 'mattn/emmet-vim'
 
 " javascript
 Plugin 'pangloss/vim-javascript'
 Plugin 'jelera/vim-javascript-syntax'
+
+" vuejs
+Plugin 'posva/vim-vue'
 
 " golang
 Plugin 'fatih/vim-go'
@@ -157,3 +161,6 @@ let g:UltiSnipsUsePythonVersion = 2
 
 " Disable ycm preview
 set completeopt-=preview
+
+" emmet config
+let g:user_emmet_leader_key='<C-l>'
