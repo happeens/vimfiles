@@ -155,7 +155,7 @@ let g:neocomplete#sources#syntax#min_keyword_length = 3
 
 " neocomplete mappings
 inoremap <expr><C-k> neocomplete#undo_completion()
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : : "\<TAB>"
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
